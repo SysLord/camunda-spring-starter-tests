@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.2.2">
+  <bpmn:collaboration id="SysLord_collab1">
+    <bpmn:participant id="SimpleProcess_Id" name="SimpleProcess_Name" processRef="SimpleProcessId" />
+  </bpmn:collaboration>
+  <bpmn:process id="SimpleProcessId" name="SimpleProcessName" isExecutable="true">
+    <bpmn:startEvent id="startLogSomething" name="startLogSomething">
+      <bpmn:outgoing>SequenceFlow_1v7yb4a</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1v7yb4a" sourceRef="startLogSomething" targetRef="logSomething" />
+    <bpmn:endEvent id="endLogSomething" name="endLogSomething">
+      <bpmn:incoming>SequenceFlow_1uj55ha</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1uj55ha" sourceRef="logSomething" targetRef="endLogSomething" />
+    <bpmn:serviceTask id="logSomething" name="logSomething" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:exclusive="false" camunda:delegateExpression="${logSomethingDelegate}">
+      <bpmn:incoming>SequenceFlow_1v7yb4a</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1uj55ha</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="SysLord_collab1">
+      <bpmndi:BPMNShape id="Participant_17ocamx_di" bpmnElement="SimpleProcess_Id">
+        <dc:Bounds x="319" y="126" width="600" height="250" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="startLogSomething">
+        <dc:Bounds x="374" y="224" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="347" y="260" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1v7yb4a_di" bpmnElement="SequenceFlow_1v7yb4a">
+        <di:waypoint xsi:type="dc:Point" x="410" y="242" />
+        <di:waypoint xsi:type="dc:Point" x="506" y="242" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="413" y="217" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_0iuqo7v_di" bpmnElement="endLogSomething">
+        <dc:Bounds x="688" y="224" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="661" y="260" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1uj55ha_di" bpmnElement="SequenceFlow_1uj55ha">
+        <di:waypoint xsi:type="dc:Point" x="606" y="242" />
+        <di:waypoint xsi:type="dc:Point" x="688" y="242" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="602" y="217" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1fghfag_di" bpmnElement="logSomething">
+        <dc:Bounds x="506" y="202" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
